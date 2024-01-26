@@ -22,6 +22,7 @@ def apply_repo_settings(pr_url):
                 new_settings = Dynaconf(settings_files=[repo_settings_file])
                 for section, contents in new_settings.as_dict().items():
                     section_dict = copy.deepcopy(get_settings().as_dict().get(section, {}))
+                    get_logger().info(get_settings().as_dict())
                     get_logger().info(f"Existing settings for section {section}, contents: {section_dict}")
                     for key, value in contents.items():
                         section_dict[key] = value
