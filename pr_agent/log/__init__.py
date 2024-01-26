@@ -31,7 +31,7 @@ def setup_logger(level: str = "INFO", fmt: LoggingFormat = LoggingFormat.CONSOLE
         )
     elif fmt == LoggingFormat.CONSOLE:
         logger.remove(None)
-        logger.add(sys.stdout, level=level, colorize=True)
+        logger.add(sys.stdout, level=level, colorize=True, backtrace=True)
 
     return logger
 
