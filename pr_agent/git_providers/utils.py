@@ -20,6 +20,7 @@ def apply_repo_settings(pr_url):
                 fd, repo_settings_file = tempfile.mkstemp(suffix='.toml')
                 os.write(fd, repo_settings)
                 new_settings = Dynaconf(settings_files=[repo_settings_file])
+                get_logger().info(f"New settings: {new_settings.as_dict()}")
                 for section, contents in new_settings.as_dict().items():
                     section_dict = copy.deepcopy(get_settings().as_dict().get(section, {}))
                     get_logger().info(get_settings().as_dict())
